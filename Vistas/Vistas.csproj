@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <PlatformTarget>x64</PlatformTarget>
+        <Platforms>x64</Platforms>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <AssemblyName>Umbra.Vistas</AssemblyName>
+        <RootNamespace>Umbra.Vistas</RootNamespace>
+        <Version>0.1.0</Version>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <!-- Chemins vers les DLL installées par XIVLauncher. Ajustez UmbraVersion après une mise à jour d'Umbra. -->
+    <PropertyGroup>
+        <UmbraVersion Condition="'$(UmbraVersion)' == ''">3.1.18.0</UmbraVersion>
+        <DalamudLibPath>$(AppData)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+        <UmbraLibPath>$(AppData)\XIVLauncher\installedPlugins\Umbra\$(UmbraVersion)\</UmbraLibPath>
+    </PropertyGroup>
+
+    <!-- Toutes ces assemblies sont fournies par Umbra/Dalamud au chargement : on ne les copie pas (Private=false). -->
+    <ItemGroup>
+        <Reference Include="Umbra"><HintPath>$(UmbraLibPath)Umbra.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="Umbra.Common"><HintPath>$(UmbraLibPath)Umbra.Common.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="Umbra.Game"><HintPath>$(UmbraLibPath)Umbra.Game.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="Una.Drawing"><HintPath>$(UmbraLibPath)Una.Drawing.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="Dalamud"><HintPath>$(DalamudLibPath)Dalamud.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="Lumina"><HintPath>$(DalamudLibPath)Lumina.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="Lumina.Excel"><HintPath>$(DalamudLibPath)Lumina.Excel.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="FFXIVClientStructs"><HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath><Private>false</Private></Reference>
+        <Reference Include="InteropGenerator.Runtime"><HintPath>$(DalamudLibPath)InteropGenerator.Runtime.dll</HintPath><Private>false</Private></Reference>
+    </ItemGroup>
+
+</Project>

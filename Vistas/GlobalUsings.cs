@@ -1,0 +1,10 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Numerics;
+global using Dalamud.Interface;
+global using Dalamud.Plugin.Services;
+global using Umbra.Common;
+global using Umbra.Game;
+global using Umbra.Widgets;
+global using Una.Drawing;
