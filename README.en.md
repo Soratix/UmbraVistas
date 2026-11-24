@@ -13,7 +13,7 @@ A toolbar widget for [Umbra](https://github.com/una-xiv/umbra) (FINAL FANTASY XI
   - **Soon:** vistas opening within the chosen delay (1 real hour by default), with the time until they open.
   - **No conditions:** vistas with no time or weather requirement (nearly all of them after A Realm Reborn). Optionally, they can also count as available, or be hidden.
 - **Each row:** the number, name, zone, emote to perform and the icon of the required weather. A clock marks a vista with a time requirement only.
-- **Click a vista:** places the flag on the map at its location. Optionally, opens the map as well, or opens the map and teleports you to the attuned aetheryte closest to the vista.
+- **Click a vista:** places the flag on the map at its location, opens the map and teleports you to the attuned aetheryte closest to the vista. Optionally, only the flag, or the flag and the map.
 - **Option:** hide expansions you have not unlocked yet. An expansion counts as unlocked as soon as one of its aetherytes is attuned.
 
 Everything comes from the game data: completed vistas, time windows, weather. The weather is computed locally, with no network calls.

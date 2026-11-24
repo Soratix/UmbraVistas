@@ -85,7 +85,7 @@ public sealed unsafe class VistasWidget(
             ) { Category = cat },
             new IntegerWidgetConfigVariable("MaxEntries", Strings.T("Cfg.MaxEntries"), null, 15, 1, 100) { Category = cat },
             new SelectWidgetConfigVariable(
-                "ClickAction", Strings.T("Cfg.ClickAction"), Strings.T("Cfg.ClickAction.Desc"), "Flag",
+                "ClickAction", Strings.T("Cfg.ClickAction"), Strings.T("Cfg.ClickAction.Desc"), "FlagMapTeleport",
                 new() {
                     ["Flag"]            = Strings.T("Cfg.ClickAction.Flag"),
                     ["FlagMap"]         = Strings.T("Cfg.ClickAction.FlagMap"),
