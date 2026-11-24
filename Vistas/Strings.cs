@@ -53,6 +53,7 @@ internal static class Strings
         ["Cfg.ClickAction.Desc"]     = ("Ce que fait un clic sur une ligne de la liste.", "What clicking a row of the list does."),
         ["Cfg.ClickAction.Flag"]     = ("Poser le drapeau", "Place the map flag"),
         ["Cfg.ClickAction.FlagMap"]  = ("Poser le drapeau et ouvrir la carte", "Place the map flag and open the map"),
+        ["Cfg.ClickAction.FlagMapTeleport"] = ("Drapeau + carte + téléportation à l'éthérite le plus proche", "Flag + map + teleport to the nearest aetheryte"),
 
         // Barre et infobulle
         ["Available.One"]   = ("{0} dispo", "{0} available"),
@@ -68,6 +69,7 @@ internal static class Strings
         ["TooltipHint"]     = ("Clic : liste · clic sur une vista : {0}", "Click: list · click a vista: {0}"),
         ["Hint.Flag"]       = ("drapeau sur la carte", "map flag"),
         ["Hint.FlagMap"]    = ("drapeau et carte", "flag and map"),
+        ["Hint.FlagMapTeleport"] = ("drapeau, carte et téléportation", "flag, map and teleport"),
 
         // Menu
         ["Section.Now"]     = ("Disponibles maintenant", "Available now"),
@@ -79,6 +81,11 @@ internal static class Strings
         ["OpensIn"]         = ("ouvre dans {0}", "opens in {0}"),
         ["FlagPlaced"]      = ("Drapeau posé : vista n° {0}, {1} ({2}).", "Flag placed: vista #{0}, {1} ({2})."),
         ["ChatSource"]      = ("Vistas", "Vistas"),
+        ["CannotTeleport"]  = ("Téléportation impossible pour le moment.", "Cannot teleport right now."),
+        ["ZoneNotFound"]    = ("Zone introuvable.", "Zone not found."),
+        ["NoAetheryte"]     = ("Aucun éthérite harmonisé pour rejoindre cette vista.", "No attuned aetheryte to reach this vista."),
+        ["TheAetheryte"]    = ("l'éthérite", "the aetheryte"),
+        ["Teleporting"]     = ("Téléportation vers {0} ({1} gils) pour la vista n° {2}, {3}.", "Teleporting to {0} ({1} gil) for vista #{2}, {3}."),
 
         // Durées
         ["Minutes"]         = ("{0} min", "{0} min"),

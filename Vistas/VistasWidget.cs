@@ -87,8 +87,9 @@ public sealed unsafe class VistasWidget(
             new SelectWidgetConfigVariable(
                 "ClickAction", Strings.T("Cfg.ClickAction"), Strings.T("Cfg.ClickAction.Desc"), "Flag",
                 new() {
-                    ["Flag"]    = Strings.T("Cfg.ClickAction.Flag"),
-                    ["FlagMap"] = Strings.T("Cfg.ClickAction.FlagMap"),
+                    ["Flag"]            = Strings.T("Cfg.ClickAction.Flag"),
+                    ["FlagMap"]         = Strings.T("Cfg.ClickAction.FlagMap"),
+                    ["FlagMapTeleport"] = Strings.T("Cfg.ClickAction.FlagMapTeleport"),
                 }
             ) { Category = cat },
         ];
@@ -281,7 +282,11 @@ public sealed unsafe class VistasWidget(
         }
 
         lines.Add("");
-        lines.Add(Strings.T("TooltipHint", Strings.T(GetConfigValue<string>("ClickAction") == "FlagMap" ? "Hint.FlagMap" : "Hint.Flag")));
+        lines.Add(Strings.T("TooltipHint", Strings.T(GetConfigValue<string>("ClickAction") switch {
+            "FlagMap"         => "Hint.FlagMap",
+            "FlagMapTeleport" => "Hint.FlagMapTeleport",
+            _                 => "Hint.Flag",
+        })));
 
         SetTooltip(string.Join("\n", lines));
     }
@@ -409,12 +414,14 @@ public sealed unsafe class VistasWidget(
     {
         if (vista.MapId == 0) return;
 
-        bool openMap = GetConfigValue<string>("ClickAction") == "FlagMap";
+        string action = GetConfigValue<string>("ClickAction");
 
         Framework.DalamudFramework.Run(() => {
-            if (openMap) {
+            if (action is "FlagMap" or "FlagMapTeleport") {
                 // OpenMapWithMapLink pose le drapeau ET ouvre la carte.
                 Framework.Service<IGameGui>().OpenMapWithMapLink(vista.TerritoryId, vista.MapId, vista.WorldPosition);
+
+                if (action == "FlagMapTeleport") TeleportToNearestAetheryte(vista);
                 return;
             }
 
@@ -428,5 +435,59 @@ public sealed unsafe class VistasWidget(
                 Strings.T("ChatSource")
             );
         });
+    }
+
+    /// <summary>
+    /// Téléporte à l'éthérite harmonisé le plus proche de la vista sur sa carte
+    /// (même approche que UmbraTimedNodes). Sans éthérite sur la carte, on se rabat
+    /// sur l'éthérite du territoire.
+    /// </summary>
+    private static void TeleportToNearestAetheryte(Vista vista)
+    {
+        var toast  = Framework.Service<IToastGui>();
+        var player = Framework.Service<IPlayer>();
+
+        if (!player.CanUseTeleportAction) {
+            toast.ShowError(Strings.T("CannotTeleport"));
+            return;
+        }
+
+        IZone zone;
+        try {
+            zone = Framework.Service<IZoneManager>().GetZone(vista.MapId);
+        } catch (Exception e) {
+            Logger.Error($"[Vistas] Zone introuvable pour la carte {vista.MapId} : {e.Message}");
+            toast.ShowError(Strings.T("ZoneNotFound"));
+            return;
+        }
+
+        // Éthérites principaux déjà harmonisés.
+        var unlocked = Framework.Service<IAetheryteList>().Where(a => a.SubIndex == 0).ToList();
+        var target   = new Vector2(vista.WorldPosition.X, vista.WorldPosition.Z);
+
+        var best = zone.StaticMarkers
+            .Where(m => m.Type == ZoneMarkerType.Aetheryte)
+            .Select(m => (Marker: m, Entry: unlocked.FirstOrDefault(a => a.AetheryteId == m.DataId)))
+            .Where(x => x.Entry != null)
+            .OrderBy(x => Vector2.Distance(new(x.Marker.WorldPosition.X, x.Marker.WorldPosition.Z), target))
+            .FirstOrDefault();
+
+        if (best.Entry == null && vista.FallbackAetheryteId != 0) {
+            best = (default, unlocked.FirstOrDefault(a => a.AetheryteId == vista.FallbackAetheryteId));
+        }
+
+        if (best.Entry == null) {
+            toast.ShowError(Strings.T("NoAetheryte"));
+            return;
+        }
+
+        string name = best.Entry.AetheryteData.ValueNullable?.PlaceName.ValueNullable?.Name.ExtractText() ?? Strings.T("TheAetheryte");
+
+        if (Telepo.Instance()->Teleport(best.Entry.AetheryteId, (byte)best.Entry.SubIndex)) {
+            Framework.Service<IChatGui>().Print(
+                Strings.T("Teleporting", name, best.Entry.GilCost, vista.Number, vista.Name),
+                Strings.T("ChatSource")
+            );
+        }
     }
 }

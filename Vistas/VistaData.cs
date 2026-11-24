@@ -17,7 +17,8 @@ public sealed record Vista(
     int     StartHour,      // heure d'Eorzéa d'ouverture, -1 si aucune condition horaire
     int     EndHour,        // heure d'Eorzéa de fermeture (exclue)
     uint    WeatherRateId,
-    uint[]  Weathers        // météos requises (vide si aucune)
+    uint[]  Weathers,       // météos requises (vide si aucune)
+    uint    FallbackAetheryteId // éthérite du territoire, pour les cartes sans éthérite
 )
 {
     public int  Number         => Index + 1;
@@ -116,7 +117,8 @@ public static class VistaRepository
                 startHour,
                 endHour,
                 territory.WeatherRate.RowId,
-                RequiredWeathers.GetValueOrDefault(adv.RowId, [])
+                RequiredWeathers.GetValueOrDefault(adv.RowId, []),
+                territory.Aetheryte.RowId
             ));
         }
 

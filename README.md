@@ -13,7 +13,7 @@ Plugin pour [Umbra](https://github.com/una-xiv/umbra) (FINAL FANTASY XIV, via Da
   - **Bientôt :** les vistas qui ouvriront dans le délai choisi (1 h réelle par défaut), avec le temps avant ouverture.
   - **Sans condition :** les vistas sans heure ni météo requise (presque toutes celles d'après A Realm Reborn). En option, elles peuvent aussi compter comme disponibles ou être masquées.
 - **Chaque ligne :** le numéro, le nom, la zone, l'emote à faire et l'icône de la météo requise. Une horloge signale une vista avec une condition horaire seulement.
-- **Clic sur une vista :** pose le drapeau sur la carte à son emplacement. En option, ouvre aussi la carte.
+- **Clic sur une vista :** pose le drapeau sur la carte à son emplacement. En option, ouvre aussi la carte, ou ouvre la carte et téléporte à l'éthérite harmonisé le plus proche de la vista.
 - **Option :** masquer les extensions pas encore débloquées. Une extension compte comme débloquée dès qu'un de ses éthérites est harmonisé.
 
 Tout vient des données du jeu : vistas faites, horaires, météo. La météo est calculée localement, sans aucun appel réseau.
