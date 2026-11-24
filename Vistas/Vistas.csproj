@@ -9,7 +9,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <AssemblyName>Umbra.Vistas</AssemblyName>
         <RootNamespace>Umbra.Vistas</RootNamespace>
-        <Version>0.1.0</Version>
+        <Version>0.2.0</Version>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

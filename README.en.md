@@ -28,7 +28,7 @@ The widget's interface, name included, follows Umbra's language: French when Umb
 
 1. In game, open **Umbra settings → Plugins**.
 2. Add a GitHub repository: owner `Soratix`, repository `UmbraVistas`.
-3. Switch the toolbar to edit mode and add the **Vistas** widget (same name in French). You can also search for `vista`, `sightseeing` or `log`.
+3. Switch the toolbar to edit mode and add the **Vistas** widget (« Exploration » when Umbra is in French). You can also search for `vista`, `sightseeing` or `log`.
 
 ## Building it yourself
 

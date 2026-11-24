@@ -1,4 +1,4 @@
-# Umbra – Vistas
+# Umbra – Exploration
 
 **Français** · [English](README.en.md)
 
@@ -28,7 +28,7 @@ L'interface du widget, nom compris, suit la langue d'Umbra : en français si Umb
 
 1. Dans le jeu, ouvrez les **paramètres d'Umbra → Plugins**.
 2. Ajoutez un dépôt GitHub : propriétaire `Soratix`, dépôt `UmbraVistas`.
-3. Passez la barre d'outils en mode édition et ajoutez le widget **« Vistas »** (même nom en anglais, « Vistas »). Dans la recherche, vous pouvez aussi taper `vista`, `carnet` ou `sightseeing`.
+3. Passez la barre d'outils en mode édition et ajoutez le widget **« Exploration »** (« Vistas » si Umbra n'est pas en français). Dans la recherche, vous pouvez aussi taper `exploration`, `vista` ou `carnet`.
 
 ## Compiler soi-même
 

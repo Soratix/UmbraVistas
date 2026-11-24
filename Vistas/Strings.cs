@@ -29,7 +29,7 @@ internal static class Strings
     }
 
     private static readonly Dictionary<string, (string Fr, string En)> Table = new() {
-        ["WidgetName"]  = ("Vistas", "Vistas"),
+        ["WidgetName"]  = ("Exploration", "Vistas"),
         ["WidgetDesc"]  = ("Les vistas du carnet d'exploration disponibles maintenant (heure et météo d'Eorzéa) et celles qui vont bientôt ouvrir.",
                            "Sightseeing log vistas available right now (Eorzea time and weather) and the ones opening soon."),
         ["Loading"]     = ("Chargement…", "Loading…"),
@@ -80,7 +80,7 @@ internal static class Strings
         ["ClosesIn"]        = ("ferme dans {0}", "closes in {0}"),
         ["OpensIn"]         = ("ouvre dans {0}", "opens in {0}"),
         ["FlagPlaced"]      = ("Drapeau posé : vista n° {0}, {1} ({2}).", "Flag placed: vista #{0}, {1} ({2})."),
-        ["ChatSource"]      = ("Vistas", "Vistas"),
+        ["ChatSource"]      = ("Exploration", "Vistas"),
         ["CannotTeleport"]  = ("Téléportation impossible pour le moment.", "Cannot teleport right now."),
         ["ZoneNotFound"]    = ("Zone introuvable.", "Zone not found."),
         ["NoAetheryte"]     = ("Aucun éthérite harmonisé pour rejoindre cette vista.", "No attuned aetheryte to reach this vista."),
